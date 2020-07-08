@@ -32,6 +32,7 @@ Output:
 import java.util.*;
 import java.lang.*;
 import java.io.*;
+import java.math.*;
 
 
 public class Find_minimum_and_maximum_element_in_an_array {
