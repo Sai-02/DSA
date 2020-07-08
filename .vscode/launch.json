@@ -1,0 +1,112 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Alternative_Sorting<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Alternative_Sorting",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Balanced_Array<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Balanced_Array",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Find_Number_of_Numbers<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Find_Number_of_Numbers",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Find_minimum_and_maximum_element_in_an_array<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Find_minimum_and_maximum_element_in_an_array",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-First_K_natural_numbers<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "First_K_natural_numbers",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Greater_on_right_side<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Greater_on_right_side",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Kth_smallest_element<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Kth_smallest_element",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Minimize_the_sum_of_product<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Minimize_the_sum_of_product",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Multiply_left_and_right_array_sum<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Multiply_left_and_right_array_sum",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Number_of_occurrence<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Number_of_occurrence",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Sort_in_specific_order<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Sort_in_specific_order",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Sum_of_distinct_elements_for_a_limited_range<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Sum_of_distinct_elements_for_a_limited_range",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Swap_and_Maximize<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Swap_and_Maximize",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Test<GeeksforGeeks-Solution_6f8a91e7>",
+            "request": "launch",
+            "mainClass": "Test",
+            "projectName": "GeeksforGeeks-Solution_6f8a91e7"
+        }
+    ]
+}
