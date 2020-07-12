@@ -50,61 +50,27 @@ public class Maximum_repeating_number {
     while (t-- > 0) {
       int n = scan.nextInt();
       int k = scan.nextInt();
-      int[] a = new int[n];
-      for (int i = 0; i < n; i++) {
-        a[i] = scan.nextInt();
+      int[] arr = new int[n];
+      int[] count = new int[k];
+      for (int i = 0; i < k; i++) {
+        count[i] = 0;
       }
-      Arrays.sort(a);
-      int max_freq = 1;
-      int num_main = a[0];
-      int freq = 0;
-      int num = 0;
 
       for (int i = 0; i < n; i++) {
-        int now = a[i];
-        if (n == 1) {
-          max_freq = 1;
-          num_main = now;
-          break;
-        }
-        if (i == 0) {
-          // max_freq = 1;
-          // num_main = now;
-          num = a[0];
-          freq = 1;
-        } else {
-          if (num == now) {
-            freq++;
-          } else {
-            if (max_freq < freq) {
-              max_freq = freq;
-              num_main = num;
-              num = now;
-              freq = 1;
-            } else if (max_freq == freq) {
-              num_main = Math.min(num, num_main);
-              num = now;
-              freq = 1;
-            } else {
-              num = now;
-              freq = 1;
-            }
-          }
-        }
-        if (i == n - 1) {
-          if (max_freq < freq) {
-            max_freq = freq;
-            num_main = num;
-            //   num=a[i];
-            //   freq=1;
-          } else if (max_freq == freq) {
-            num_main = Math.min(num, num_main);
-            //   num=now;
-            //   freq=1;
-          }
+        arr[i] = scan.nextInt();
+        count[arr[i]]++;
+      }
+      int result = 0;
+      int max = Integer.MIN_VALUE;
+      for (int i = 0; i < k; i++) {
+        if (max < count[i]) {
+          max = count[i];
+          result = i;
+        } else if (max == count[i]) {
+          result = Math.min(result, i);
         }
       }
-      System.out.println(num_main);
+      System.out.println(result);
     }
   }
 }
