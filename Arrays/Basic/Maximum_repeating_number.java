@@ -55,46 +55,56 @@ public class Maximum_repeating_number {
         a[i] = scan.nextInt();
       }
       Arrays.sort(a);
-      ArrayList<Integer> num = new ArrayList<Integer>();
-      ArrayList<Integer> c = new ArrayList<Integer>();
-      int pre = a[0];
-      int count = 0;
+      int max_freq = 1;
+      int num_main = a[0];
+      int freq = 0;
+      int num = 0;
+
       for (int i = 0; i < n; i++) {
+        int now = a[i];
         if (n == 1) {
-          num.add(a[i]);
-          c.add(1);
+          max_freq = 1;
+          num_main = now;
           break;
         }
         if (i == 0) {
-          pre = a[i];
-          count = 1;
+          // max_freq = 1;
+          // num_main = now;
+          num = a[0];
+          freq = 1;
         } else {
-          int now = a[i];
-          if (now == pre) {
-            count++;
+          if (num == now) {
+            freq++;
           } else {
-            num.add(pre);
-            c.add(count);
-            count = 1;
-            pre = a[i];
+            if (max_freq < freq) {
+              max_freq = freq;
+              num_main = num;
+              num = now;
+              freq = 1;
+            } else if (max_freq == freq) {
+              num_main = Math.min(num, num_main);
+              num = now;
+              freq = 1;
+            } else {
+              num = now;
+              freq = 1;
+            }
           }
         }
         if (i == n - 1) {
-          num.add(pre);
-          c.add(count);
+          if (max_freq < freq) {
+            max_freq = freq;
+            num_main = num;
+            //   num=a[i];
+            //   freq=1;
+          } else if (max_freq == freq) {
+            num_main = Math.min(num, num_main);
+            //   num=now;
+            //   freq=1;
+          }
         }
       }
-      int max = 0;
-      count = Integer.MIN_VALUE;
-      for (int i = 0; i < num.size(); i++) {
-        if (c.get(i) > count) {
-          count = c.get(i);
-          max = num.get(i);
-        } else if (c.get(i) == count) {
-          max = Math.min(max, num.get(i));
-        }
-      }
-      System.out.println(max);
+      System.out.println(num_main);
     }
   }
 }
