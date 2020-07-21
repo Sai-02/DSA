@@ -1,0 +1,118 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - External Terminal",
+            "request": "launch",
+            "console": "externalTerminal",
+            "mainClass": ""
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Adding_Ones<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Adding_Ones",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Bitonic_Generator_Sort<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Bitonic_Generator_Sort",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Buildings_receiving_sunlight<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Buildings_receiving_sunlight",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Count_Pairs_in_an_Array<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Count_Pairs_in_an_Array",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Count_Smaller_elements<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Count_Smaller_elements",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Count_increasing_Subarrays<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Count_increasing_Subarrays",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Find_the_number_of_sub_arrays_having_even_sum<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Find_the_number_of_sub_arrays_having_even_sum",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Length_of_longest_subarray<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Length_of_longest_subarray",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Pairs_which_are_Divisible_by_4<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Pairs_which_are_Divisible_by_4",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Product_array_puzzle<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Product_array_puzzle",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Rahul_a_Geek<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Rahul_a_Geek",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Sort_an_array_of_0s_1s_and_2s<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Sort_an_array_of_0s_1s_and_2s",
+            "projectName": "Easy_a68f78f"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-Test<Easy_a68f78f>",
+            "request": "launch",
+            "mainClass": "Test",
+            "projectName": "Easy_a68f78f"
+        }
+    ]
+}
