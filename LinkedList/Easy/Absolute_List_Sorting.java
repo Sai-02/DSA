@@ -115,31 +115,59 @@ class Node
 class GfG1 {
 
   Node sortedList(Node head) {
-    Node t = head;
+    // Node t = head;
 
-    while (t != null) {
-      try {
-        if ((t.next).data < 0) {
-          Node h = new Node(head.data);
-          h.next = head.next;
-          head.next = h;
-          head.data = (t.next).data;
-          try {
-            t.next = (t.next).next;
-          } catch (NullPointerException e) {
-            t.next = null;
-            // return head;
-            break;
-          }
-        } else {
-          t = t.next;
-        }
-      } catch (NullPointerException e) {
-        // return head;
+    // while (t != null) {
+    //   try {
+    //     if ((t.next).data < 0) {
+    //       Node h = new Node(head.data);
+    //       h.next = head.next;
+    //       head.next = h;
+    //       head.data = (t.next).data;
+    //       try {
+    //         t.next = (t.next).next;
+    //       } catch (NullPointerException e) {
+    //         t.next = null;
+    //         // return head;
+    //         break;
+    //       }
+    //     } else {
+    //       t = t.next;
+    //     }
+    //   } catch (NullPointerException e) {
+    //     // return head;
 
-        break;
+    //     break;
+    //   }
+    // }
+    // return head;
+    if (head == null || head.next == null) {
+      return head;
+    }
+
+    Node node, next, prev;
+
+    node = next = head;
+    prev = null;
+
+    if (head.data < 0) {
+      prev = node;
+      node = node.next;
+    }
+
+    while (node != null) {
+      if (node.data < 0) {
+        prev.next = node.next;
+        next = node.next;
+        node.next = head;
+        head = node;
+        node = next;
+      } else {
+        prev = node;
+        node = node.next;
       }
     }
+
     return head;
   }
 }
