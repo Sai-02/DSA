@@ -40,6 +40,16 @@ import java.lang.*;
 import java.math.*;
 import java.util.*;
 
+class Node {
+  int data;
+  Node next;
+
+  Node(int d) {
+    data = d;
+    next = null;
+  }
+}
+
 public class Segregate_even_and_odd_nodes_in_a_Linked_List {
 
   public static void main(String[] args) {
@@ -65,9 +75,50 @@ public class Segregate_even_and_odd_nodes_in_a_Linked_List {
       //
       //
       //Solution using LinkedList
-      
+      int n = scan.nextInt();
+      int k = scan.nextInt();
+      Node head = new Node(k);
+      n--;
+      while (n-- > 0) {
+        int a = scan.nextInt();
 
+        Node temp = new Node(a);
+        temp.next = head;
+        head = temp;
+      }
+      head = func(head);
+      Node node = head;
+      while (node != null) {
+        System.out.printf("%d ", node.data);
+      }
+      System.out.println();
     }
+  }
+
+  public static Node func(Node head) {
+    Node last = head;
+    while (last.next != null) {
+      last = last.next;
+    }
+    Node t = head;
+    while (head.data % 2 != 0) {
+      Node temp = new Node(t.data);
+      last.next = temp;
+      head = head.next;
+      last = temp;
+    }
+
+    while (t.next != null) {
+      if ((t.next).data % 2 == 0) {
+        t = t.next;
+      } else {
+        Node temp = new Node((t.next).data);
+        last.next = temp;
+        t.next = (t.next).next;
+        last = temp;
+      }
+    }
+    return head;
   }
 
   static class FastReader {
