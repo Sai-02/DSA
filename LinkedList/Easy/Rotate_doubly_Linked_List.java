@@ -107,10 +107,11 @@ class Gfg2 {
       i++;
       Node t = new Node(head.data);
 
-    //   t.prev = last;
+      //   t.prev = last;
       last.next = t;
       last = last.next;
       head = head.next;
+      head.prev = null;
       //   try{
 
       //       last.next=null;
