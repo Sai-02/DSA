@@ -6,6 +6,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - Adding_Ones",
+            "request": "launch",
+            "mainClass": "Adding_Ones",
+            "projectName": "Easy_32254e88"
+        },
+        {
+            "type": "java",
             "name": "Debug (Launch) - Current File",
             "request": "launch",
             "mainClass": "${file}"
