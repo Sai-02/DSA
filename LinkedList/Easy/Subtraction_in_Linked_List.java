@@ -118,6 +118,7 @@ class Solution1 {
             l1 = temp;
 
             try {
+                
 
                 t1.next = t1.next.next;
             } catch (Exception e) {
