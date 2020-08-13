@@ -43,6 +43,7 @@ Output:
 // driver
 
 import java.util.*;
+import java.math.*;
 
 class Node {
     int data;
@@ -108,80 +109,171 @@ public class Subtraction_in_Linked_List {
  */
 
 class Solution1 {
+    // static int length(Node n) {
+    // int count = 0;
+    // Node t = n;
+    // while (t != null) {
+    // count++;
+    // t = t.next;
+    // }
+    // return count;
+    // }
+
+    // static Node subLinkedList(Node l1, Node l2) {
+    // Node t1 = l1;
+    // Node t2 = l2;
+    // while (t1.next != null) {
+    // Node temp = new Node((t1.next).data);
+    // temp.next = l2;
+    // l1 = temp;
+    // t1.next = (t1.next).next;
+    // }
+    // while (t2.next != null) {
+    // Node temp = new Node((t2.next).data);
+    // temp.next = l2;
+    // l2 = temp;
+    // t2.next = (t2.next).next;
+    // }
+    // int n1 = length(l1);
+    // int n2 = length(l2);
+    // if (n1 >= n2) {
+    // t1 = l1;
+    // t2 = l2;
+
+    // } else {
+    // t1 = l2;
+    // t2 = l1;
+    // }
+    // int i = 0;
+    // Node head = new Node(0);
+    // Node t = head;
+    // while (t1 != null) {
+    // int small = 0;
+    // if (t2 != null) {
+    // small = t2.data;
+    // }
+    // if (t1.data < small) {
+    // t1.next.data = t1.next.data - 1;
+    // t1.data = t1.data + 10;
+    // // taking carry
+    // }
+    // Node temp = new Node(t1.data - small);
+    // if (i == 0) {
+    // t.data = temp.data;
+    // i++;
+    // } else {
+    // t.next = temp;
+    // t = t.next;
+    // }
+    // t1 = t1.next;
+    // if (t2.next != null) {
+    // t2 = t2.next;
+    // }
+
+    // }
+    // // while (head.next != null && head.data == 0) {
+
+    // // head = head.next;
+    // // }
+
+    // return head;
+    // }
+    static int length(Node n) {
+        int ret = 0;
+        while (n != null) {
+            ret += 1;
+            n = n.next;
+        }
+        return ret;
+    }
+
+    static Node reverse(Node head)
+    // this function reverses the linked list
+    {
+        Node prev = null;
+        Node current = head;
+        Node next;
+
+        while (current != null) {
+            next = current.next; // storing next node
+            current.next = prev; // linking current node to previous
+            prev = current; // updating prev
+            current = next; // updating current
+        }
+
+        return prev;
+    }
+
     static Node subLinkedList(Node l1, Node l2) {
-        Node t1 = l1;
-        Node t2 = l2;
+        while (l1 != null && l1.data == 0)
+            l1 = l1.next;
+        // removing trailing zeroes from l1
 
-        while (t1.next != null) {
-            Node temp = new Node(t1.next.data);
-            temp.next = l1;
-            l1 = temp;
+        while (l2 != null && l2.data == 0)
+            l2 = l2.next;
+        // removing trailing zeroes from l2
 
-            try {
-                
+        int n1 = length(l1);
+        int n2 = length(l2);
 
-                t1.next = t1.next.next;
-            } catch (Exception e) {
-                break;
-            }
-
-        }
-        // System.out.println(count);
-        while (t2.next != null) {
-            Node temp = new Node(t2.next.data);
-            temp.next = l2;
+        if (n2 > n1) {
+            Node temp = l1;
+            l1 = l2;
             l2 = temp;
-            try {
-
-                t2.next = t2.next.next;
-            } catch (Exception e) {
-                break;
-            }
-
         }
-        t1 = l1;
-        t2 = l2;
-        Node head = new Node(0);
+        // making sure l1 list has the bigger number
 
-        Node t = head;
-        int i = 0;
-
-        while (t2 != null) {
-            if (t1.data <= 0) {
-                t1.data = t1.data + 10;
-                t1.next.data--;
-            }
-            int k = Math.abs(t1.data - t2.data);
-            Node temp = new Node(k);
-            if (i == 0) {
-                t.data = temp.data;
-                i++;
-            } else {
-
-                t.next = temp;
-                t = t.next;
+        if (n1 == n2) {
+            Node t1 = l1, t2 = l2;
+            while (t1.data == t2.data)
+            // finding which number is greater
+            {
                 t1 = t1.next;
                 t2 = t2.next;
-            }
 
+                if (t1 == null)
+                    return new Node(0);
+                // returning zero if both numbers are same
+            }
+            if (t2.data > t1.data) {
+                Node temp = l1;
+                l1 = l2;
+                l2 = temp;
+            }
+            // making sure l1 list has the bigger number
         }
+
+        l1 = reverse(l1);
+        l2 = reverse(l2);
+
+        Node res = null;
+        Node t1 = l1, t2 = l2;
         while (t1 != null) {
-            if (t1.data <= 0 && t1.next == null) {
-                return head;
-            }
-            if (t1.data < 0) {
-                t1.data = t1.data + 10;
-                t1.next.data--;
-            }
-          
-            int k = t1.data;
-            Node temp = new Node(k);
-            t.next = temp;
-            t = t.next;
-            t1 = t1.next;
+            int small = 0;
+            if (t2 != null)
+                small = t2.data;
+            // 'small' holds the next digit of number to be subtracted
 
+            if (t1.data < small) {
+                t1.next.data = t1.next.data - 1;
+                t1.data = t1.data + 10;
+                // taking carry
+            }
+
+            Node n = new Node(t1.data - small);
+            // creating new node for storing difference
+            n.next = res;
+            res = n;
+
+            t1 = t1.next;
+            if (t2 != null)
+                t2 = t2.next;
         }
 
-        return head;
+        while (res.next != null && res.data == 0)
+            res = res.next;
+        // removing trailing zeroes from result list
+
+        return res;
     }
 }
