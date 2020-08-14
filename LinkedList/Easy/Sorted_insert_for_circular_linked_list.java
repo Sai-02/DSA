@@ -83,27 +83,59 @@ public class Sorted_insert_for_circular_linked_list {
 class GfG9 {
     public static void insert(Node zhead, int value, int n) {
         Node t = zhead;
+        // int k=n;
         if (zhead.data > value) {
+            Node last = zhead;
+            while (last.next != zhead) {
+                last = last.next;
+            }
+            last.next = null;
             Node temp = new Node(value);
             temp.next = zhead;
             zhead = temp;
+            t = zhead;
+            while (t.next != null) {
+                t = t.next;
+            }
+            t.next = zhead;
+            t = zhead;
+            while (t.next != zhead) {
+                System.out.print(t.data + " ");
+                t = t.next;
+            }
+            System.out.print(t.data);
         } else {
-            while (n-- > 0) {
+            // while (t.next != zhead && n-- > 0) {
+            while (t.next != zhead)
+
                 if (t.next.data >= value) {
                     Node temp = new Node(value);
                     temp.next = t.next;
                     t.next = temp;
+                    // System.out.println(t.data+" "+temp.data+" "+temp.next.data);
                     break;
                 } else {
                     t = t.next;
                 }
+            // if (n==1) {
+            if (t.next == zhead) {
+
+                Node temp = new Node(value);
+                temp.next = zhead;
+                t.next = temp;
             }
 
-        }
-        t = zhead;
-        while (t != null) {
-            System.out.print(t.data + " ");
-            t = t.next;
+            t = zhead;
+
+            while (true)
+
+            {
+                System.out.print(t.data + " ");
+                t = t.next;
+                if (t == zhead) {
+                    break;
+                }
+            }
         }
 
     }
