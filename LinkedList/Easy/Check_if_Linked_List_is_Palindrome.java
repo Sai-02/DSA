@@ -109,57 +109,47 @@ public class Check_if_Linked_List_is_Palindrome {
  */
 
 class Palindrome {
+    static Node reverse(Node first) {
+
+        Node t1 = first;
+        while (t1.next != null) {
+            Node temp = new Node(t1.next.data);
+            temp.next = first;
+            first = temp;
+            t1.next = t1.next.next;
+
+        }
+        return first;
+    }
+
     // Function to check if linked list is palindrome
     boolean isPalindrome(Node head) {
-        int n = 0;
         Node t = head;
+        int n = 0;
         while (t != null) {
-            n++;
-            if (t.next == null) {
-                break;
-            }
             t = t.next;
-
-        }
-        if (n % 2 == 0) {
-            n = n / 2;
-        } else {
-            n = n / 2;
             n++;
         }
-        Node head1;
+        n = n / 2;
+        t = head;
         int i = 0;
-        t=head;
-        try{
-
-            while (t.next != null) {
-                i++;
-                if (i > n) {
-                    if (i - n == 1) {
-                        head1 = t.next;
-                        t.next = t.next.next;
-                    } else {
-                        Node temp = new Node(t.next.data);
-                        temp.next = head1;
-                        head1 = temp;
-                        t = t.next.next;
-                        
-                    }
-                    
-                } else {
-                    t = t.next;
-                }
+        while (n - i > 2) {
+            i++;
+            t = t.next;
+        }
+        Node head1 = new Node(t.data);
+        head1.next = t.next;
+        head1 = reverse(head1);
+        while (head1 != null) {
+            if (head1.data != head.data) {
+                return false;
+            } else {
+                head = head.next;
+                head1 = head1.next;
             }
-        }
-        catch(Exception e){
-            int jdtjt=0;
-        }
-        Node k = head1;
-        while (k != null) {
-            System.out.print(k.data + " ");
-            k = k.next;
+
         }
 
-        return false;
+        return true;
     }
 }
