@@ -138,47 +138,88 @@ public class Remove_loop_in_Linked_List {
  */
 
 class solver {
-    public static boolean IsLoop(Node head) {
-        Node slow = head;
-        Node fast = head;
-        while (slow != null && fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-            if (slow == fast) {
-                return true;
-            }
 
-        }
-        return false;
+    // public static boolean IsLoop(Node head) {
+    // Node slow = head;
+    // Node fast = head;
+    // while (slow != null && fast != null && fast.next != null) {
+    // slow = slow.next;
+    // fast = fast.next.next;
+    // if (slow == fast) {
+    // return true;
+    // }
 
-    }
+    // }
+    // return false;
 
-    public static Node RemoveLoop(Node head) {
-        Node slow = head;
-        Node fast = head;
-        while (slow != null && fast != null && fast.next != null) {
-            slow = slow.next;
-            fast = fast.next.next;
-            if (slow.next == fast.next) {
-                slow = slow.next;
-                break;
-            }
+    // }
 
-        }
-        int n = 0;
-        while (fast.next == slow.next) {
-            slow = slow.next;
-            n++;
+    // public static void removeLoop(Node head) {
+    // Node fast, slow, start;
+    // slow = fast = head;
+    // if (IsLoop(head)) {
 
-        }
+    // while (slow != null && fast != null && fast.next != null) {
+    // fast = fast.next.next;
+    // slow = slow.next;
+    // if (slow == fast) {
+    // break;
 
-        return head;
-    }
+    // }
+    // }
+    // int k = 0;
+
+    // while (fast.next != slow) {
+    // fast = fast.next;
+    // k++;
+
+    // }
+
+    // fast = head;
+    // start = head;
+    // for (int i = 0; i < k; i++) {
+    // fast = fast.next;
+
+    // }
+
+    // while (fast != start) {
+    // fast = fast.next;
+    // start = start.next;
+    // }
+    // start.next = null;
+    // }
+    // }
 
     public static void removeLoop(Node head) {
-        if (IsLoop(head)) {
-            RemoveLoop(head);
+        if (head == null)
+            return;
+
+        Node fast = head.next;
+        Node slow = head;
+
+        while (fast != slow) {
+            if (fast == null || fast.next == null)
+                return;
+            fast = fast.next.next;
+            slow = slow.next;
         }
 
+        int size = 1;
+        fast = fast.next;
+        while (fast != slow) {
+            size += 1;
+            fast = fast.next;
+        }
+
+        slow = head;
+        fast = head;
+        for (int i = 0; i < size - 1; i++)
+            fast = fast.next;
+
+        while (fast.next != slow) {
+            fast = fast.next;
+            slow = slow.next;
+        }
+        fast.next = null;
     }
 }
