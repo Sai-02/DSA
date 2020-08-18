@@ -1,24 +1,24 @@
 
 /*
 Given a single linked list and an integer x.
- Your task is to complete the function deleteAllOccurances()
-  which deletes all occurences of a key x present in the linked list. 
-  The function takes two arguments: the head of the linked list and an integer x. 
-  The function should return the head of the modified linked list.
+ Your task is to complete the function deleteAllOccurances() which deletes
+  all occurences of a key x present in the linked list.
+   The function takes two arguments: the head of the linked list and an integer x. 
+   The function should return the head of the modified linked list.
 
 Input:
-The first line of input contains an element T, denoting the number of test cases. 
-Then T test cases follow. Each test case contains three lines.
+The first line of input contains an element T, denoting the number of test cases.
+ Then T test cases follow. Each test case contains three lines. 
  The first line of each test case contains an integer N denoting the no of elements of the linked list.
-  Then in the next line are N space separated values of the linked list.
-   The third line of each test case contains an integer x.
+  Then in the next line are N space separated values of the linked list. 
+  The third line of each test case contains an integer x.
 
 Output:
 The output for each test case will be the space separated value of the returned linked list.
 
 User Task:
-The task is to complete the function deleteAllOccurances()
- which should delete all the occurrences of given number x from the list.
+The task is to complete the function deleteAllOccurances() 
+which should delete all the occurrences of given number x from the list.
 
 Expected Time Complexity : O(n)
 Expected Auxilliary Space : O(1)
@@ -43,9 +43,8 @@ Output:
 1 3 3
 
 Example:
-Testcase 2: Given number to delete is 2.
- After deleting all occurrences of 2, we have elements in the list as 1, 3, and 3.
-  
+Testcase 2: Given number to delete is 2. After deleting all occurrences of 2, 
+we have elements in the list as 1, 3, and 3.
 */
 // { Driver Code Starts
 import java.util.*;
@@ -86,7 +85,7 @@ public class Delete_keys_in_a_Linked_list {
                 tail = tail.next;
             }
             int x = sc.nextInt();
-            GfG g = new GfG();
+            GfG11 g = new GfG11();
             Node result = g.deleteAllOccurances(head, x);
             printList(result);
             t--;
@@ -100,8 +99,45 @@ public class Delete_keys_in_a_Linked_list {
  * Node(int d) { data = d; next = null; } }
  */
 
-class GfG {
+class GfG11 {
     public static Node deleteAllOccurances(Node head, int x) {
+        // Removing corner case in beginning
+        while (head.data == x) {
+            head = head.next;
+        }
+        Node t = head;
+        // Reverse linked list
+        while (t.next != null) {
+            Node temp = new Node((t.next).data);
+            temp.next = head;
+            head = temp;
+            t.next = (t.next).next;
+        }
+        // Removing corner case in end
+        while (head.data == x) {
+            head = head.next;
+        }
+        // Reverse linked list
+        t = head;
+
+        while (t.next != null) {
+            Node temp = new Node((t.next).data);
+            temp.next = head;
+            head = temp;
+            t.next = (t.next).next;
+        }
+        t = head;
+
+        while (t.next != null && t != null) {
+            if (t.next.data == x) {
+                t.next = t.next.next;
+            } else {
+
+                t = t.next;
+            }
+
+        }
         return head;
+
     }
 }
