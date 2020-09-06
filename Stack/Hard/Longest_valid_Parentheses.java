@@ -35,36 +35,26 @@ public class Longest_valid_Parentheses {
         int t = Integer.parseInt(scan.nextLine());
         while (t-- > 0) {
             String str = scan.nextLine();
-            int count = 0, max = 0;
-            Stack<Character> s = new Stack<Character>();
+            Stack<Character> stChar = new Stack<>();
+            Stack<Integer> stInt = new Stack<>();
+            stInt.push(-1);
+            int max = 0;
             for (int i = 0; i < str.length(); i++) {
-                if (s.empty()) {
-                    if (str.charAt(i) == '(') {
-                        s.push(str.charAt(i));
-
-                    } else {
-                        max = Math.max(max, count);
-                        count = 0;
-                    }
+                if (str.charAt(i) == '(') {
+                    stChar.push('(');
+                    stInt.push(i);
                 } else {
-                    if (str.charAt(i) == '(') {
-                        s.push(str.charAt(i));
+                    if (!stChar.empty() && stChar.peek() == '(') {
+                        stChar.pop();
+                        stInt.pop();
+                        max = Math.max(max, i - stInt.peek());
+
                     } else {
-                        if (s.peek() == '(') {
-                            s.pop();
-                            count = count + 2;
-
-                        } else {
-
-                            max = Math.max(max, count);
-                            count = 0;
-                        }
+                        stInt.push(i);
                     }
                 }
 
             }
-            max = Math.max(max, count);
-
             System.out.println(max);
 
         }
