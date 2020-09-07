@@ -79,10 +79,10 @@ public class Finding_middle_element_in_a_linked_list {
         tail.next = new Node(sc.nextInt());
         tail = tail.next;
       }
-      Solution g = new Solution();
+      Solution1 g = new Solution1();
       int ans = g.getMiddle(head);
       System.out.println(ans);
-      //printList(head);
+      // printList(head);
       t--;
     }
   }
@@ -90,35 +90,50 @@ public class Finding_middle_element_in_a_linked_list {
 
 // } Driver Code Ends
 
-/* Node of a linked list
-     class Node {
-       int data;
-        Node next;
-        Node(int d)  { data = d;  next = null; }
-    }
-    */
+/*
+ * Node of a linked list class Node { int data; Node next; Node(int d) { data =
+ * d; next = null; } }
+ */
 
-class Solution {
+// class Solution {
 
+// int getMiddle(Node head) {
+// int n = 0;
+// Node t = head;
+// while (t != null) {
+// t = t.next;
+// n++;
+// }
+
+// n = n / 2;
+// n++;
+// t = head;
+// int i = 1;
+// while (t != null) {
+// if (i == n) {
+// return t.data;
+// }
+// i++;
+// t = t.next;
+// }
+// return -1;
+// }
+// }
+
+// =================================================
+//
+// Solution in one iteration using two pointers
+//
+// ==================================================
+
+class Solution1 {
   int getMiddle(Node head) {
-    int n = 0;
-    Node t = head;
-    while (t != null) {
-      t = t.next;
-      n++;
+    Node slow = head;
+    Node fast = head;
+    while (fast != null && fast.next != null) {
+      slow = slow.next;
+      fast = fast.next.next;
     }
-
-    n = n / 2;
-    n++;
-    t = head;
-    int i = 1;
-    while (t != null) {
-      if (i == n) {
-        return t.data;
-      }
-      i++;
-      t = t.next;
-    }
-    return -1;
+    return slow.data;
   }
 }
