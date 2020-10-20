@@ -1,3 +1,4 @@
+
 class LinkedList {
 
     public Node head;
