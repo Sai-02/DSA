@@ -1,5 +1,41 @@
 /*
+Given a Binary Tree, print Left view of it. 
+Left view of a Binary Tree is set of nodes visible when tree is visited from Left side.
+ The task is to complete the function leftView(), which accepts root of the tree 
+ as argument.
 
+Left view of following tree is 1 2 4 8.
+
+          1
+       /     \
+     2        3
+   /     \    /    \
+  4     5   6    7
+   \
+     8   
+
+Example 1:
+
+Input:
+   1
+ /  \
+3    2
+Output: 1 3
+
+Example 2:
+
+Input:
+
+Output: 10 20 40
+Your Task:
+You just have to complete the function leftView()
+ that prints the left view. The newline is automatically appended by the driver code.
+Expected Time Complexity: O(N).
+Expected Auxiliary Space: O(Height of the Tree).
+
+Constraints:
+1 <= Number of nodes <= 100
+1 <= Data of a node <= 1000
  */
 
 // { Driver Code Starts
@@ -20,7 +56,7 @@ class Node {
     }
 }
 
-class GfG {
+public class Left_View_of_Binary_Tree {
 
     static Node buildTree(String str) {
 
@@ -97,7 +133,7 @@ class GfG {
         while (t > 0) {
             String s = br.readLine();
             Node root = buildTree(s);
-            Tree g = new Tree();
+            Tree26 g = new Tree26();
             ArrayList<Integer> result = g.leftView(root);
             for (int value : result) {
                 System.out.print(value + " ");
@@ -116,7 +152,7 @@ class GfG {
  * 
  * Node(int item) { data = item; left = right = null; } }
  */
-class Tree {
+class Tree26 {
     ArrayList<Integer> leftView(Node root) {
         ArrayList<Integer> a = new ArrayList<>();
         Queue<Node> q = new LinkedList<>();
@@ -148,3 +184,53 @@ class Tree {
 
     }
 }
+
+
+
+// ======================================
+// 
+//  GFG EDitorial
+// 
+// =====================================
+
+
+
+// We can keep track of level of a node by passing a parameter to all recursive calls.
+//  The idea is to keep track of maximum level also. Whenever we see a node whose level
+//   is more than maximum level so far, we print the node because this is the first node
+//    in its level
+//  (Note that we traverse the left subtree before right subtree).
+
+
+// class Tree
+// {
+// 	//Node root;
+    
+//     int max_level = 0;
+    
+//     // Util function to get the left view
+//     void leftViewUtil(ArrayList<Integer> result, Node node, int level)
+//     {
+//         // base case
+//         if (node==null) return;
+        
+//         // If this is the first node of its level 
+//         if (max_level < level)
+//         {
+//             result.add(node.data);
+//             max_level = level;
+//         }
+        
+//         // Recur for left and right subtrees 
+//         leftViewUtil(result, node.left, level+1);
+//         leftViewUtil(result, node.right, level+1);
+//     }
+    
+//     // Function to get the left view
+//     ArrayList<Integer> leftView(Node root)
+//     {
+//         ArrayList<Integer> result = new ArrayList<Integer>();
+// 		leftViewUtil(result, root, 1);
+// 		return result;
+//     }
+// }
