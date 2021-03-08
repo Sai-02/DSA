@@ -98,3 +98,37 @@ class Solution {
         return true;
     }
 }
+
+// =======================================
+// 
+// GFG Editorial
+// 
+// =======================================
+
+
+// class Solution{
+//    static boolean check(int num){
+//        char[] s=Integer.toString(num).toCharArray();
+//        int[] b=new int[10];
+       
+//        for(int i=0;i<s.length;i++){
+//            b[(int)s[i]-'0']++;
+//        }
+//        int c=0;
+//        for(int i=0;i<10;i++){
+//            if(b[i]>1){
+//                return false;
+//            }
+//        }
+//        return true;
+//    }
+//    static ArrayList<Integer> uniqueNumbers(int l,int r){
+//        ArrayList<Integer> list = new ArrayList<>();
+//        for(int i=l;i<=r;i++){
+//            if(check(i)){
+//                list.add(i);
+//            }
+//        }
+//        return list;
+//    }
+// }
