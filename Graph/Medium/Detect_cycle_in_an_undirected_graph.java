@@ -40,7 +40,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class Detect_cycle_in_an_undirected_graph{
+public class Detect_cycle_in_an_undirected_graph {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine().trim());
@@ -68,15 +68,11 @@ public class Detect_cycle_in_an_undirected_graph{
     }
 }// } Driver Code Ends
 
-
-
-
 // ============================================
-// 
+//
 // BFS Approach
-// 
+//
 // ==============================================
-
 
 class Pair {
     int data;
@@ -118,13 +114,42 @@ class Solution {
     }
 }
 
-
-
-
 // ===============================================
-// 
+//
 // DFS Approach
-// 
+//
 // ===============================================
 
+class Solution {
+    // Function to detect cycle in an undirected graph.
 
+    public boolean isCycle(int V, ArrayList<ArrayList<Integer>> adj) {
+        boolean visited[] = new boolean[V + 1];
+        for (int i = 0; i < V; i++) {
+            if (!visited[i]) {
+                visited[i] = true;
+                if (checkCycle(adj, visited, i, -1)) {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+
+    }
+
+    public boolean checkCycle(ArrayList<ArrayList<Integer>> adj, boolean visited[], int node, int parent) {
+
+        for (Integer i : adj.get(node)) {
+            if (!visited[i]) {
+                visited[i] = true;
+                if (checkCycle(adj, visited, i, node)) {
+                    return true;
+                }
+            } else if (i != parent) {
+                return true;
+            }
+        }
+        return false;
+    }
+}
