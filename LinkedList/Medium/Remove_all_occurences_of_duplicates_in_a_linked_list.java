@@ -213,3 +213,36 @@ class Solution11 {
 
     }
 }
+// ======================================================================
+// 
+// More Optimized Solution
+// 
+// ======================================================================
+
+class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head==null||head.next==null)return head;
+        ListNode dummyNode=new ListNode(0);
+        dummyNode.next=head;
+        ListNode prev=dummyNode,curr=head,next=head.next;
+        int lastRepeatedNodeValue=Integer.MIN_VALUE;
+        while(curr!=null&&curr.next!=null){
+            if(lastRepeatedNodeValue==curr.val){
+                prev.next=curr.next;
+                curr=prev.next;
+            }
+            else if(curr.val==curr.next.val){
+                lastRepeatedNodeValue=curr.val;
+                curr.next=curr.next.next;
+            }
+            else{
+                prev=curr;
+                curr=curr.next;
+            }
+        }
+        if(curr!=null&&curr.val==lastRepeatedNodeValue){
+            prev.next=null;
+        }
+        return dummyNode.next;
+    }
+}
