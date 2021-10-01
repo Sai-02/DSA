@@ -23,159 +23,78 @@
 // { Driver Code Starts
 // driver
 
-import java.util.*;
-
-class Node {
-    int data;
-    Node next;
-
-    Node(int d) {
-        data = d;
-        next = null;
-    }
-}
-
-public class Add_two_numbers_represented_by_linked_lists {
-
-    static void printList(Node n) {
-        while (n != null) {
-            System.out.print(n.data + " ");
-            n = n.next;
-        }
-        System.out.println();
-    }
-
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int T = sc.nextInt();
-
-        while (T-- > 0) {
-
-            int n = sc.nextInt();
-            int val = sc.nextInt();
-
-            Node first = new Node(val);
-            Node tail = first;
-            for (int i = 0; i < n - 1; i++) {
-                val = sc.nextInt();
-                tail.next = new Node(val);
-                tail = tail.next;
-            }
-
-            int m = sc.nextInt();
-            val = sc.nextInt();
-
-            Node second = new Node(val);
-            tail = second;
-            for (int i = 0; i < m - 1; i++) {
-                val = sc.nextInt();
-                tail.next = new Node(val);
-                tail = tail.next;
-            }
-
-            Solution5 g = new Solution5();
-            Node res = g.addLists(first, second);
-            printList(res);
-        }
-    }
-}
-// } Driver Code Ends
-
-/*
- * node for linked list
- * 
- * class Node { int data; Node next;
- * 
- * Node(int d) { data = d; next = null; } }
- * 
+/**
+ * Definition for singly-linked list. public class ListNode { int val; ListNode
+ * next; ListNode() {} ListNode(int val) { this.val = val; } ListNode(int val,
+ * ListNode next) { this.val = val; this.next = next; } }
  */
+class ListNode {
+    int val;
+    ListNode next;
 
-class Solution5 {
-    static Node reverse(Node first) {
-
-        Node t1 = first;
-        while (t1.next != null) {
-            Node temp = new Node(t1.next.data);
-            temp.next = first;
-            first = temp;
-            t1.next = t1.next.next;
-
-        }
-        return first;
+    ListNode() {
     }
 
-    static int length(Node k) {
-        int n = 0;
-        Node t = k;
-        while (t != null) {
-            n++;
-            t = t.next;
-        }
-        return n;
+    ListNode(int val) {
+        this.val = val;
     }
 
-    static Node addLists(Node first, Node second) {
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+}
 
-        int n1 = length(first);
-        int n2 = length(second);
-        if (n2 > n1) {
-            Node temp = new Node(first.data);
-            temp.next = first.next;
-            first = second;
-            second = temp;
+class Solution20 {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        l1 = reverse(l1);
+        l2 = reverse(l2);
+        ListNode dummyNode = new ListNode(-1);
+        ListNode temp = dummyNode;
+        int carry = 0;
+        ListNode temp1 = l1, temp2 = l2;
+        while (temp1 != null && temp2 != null) {
+            int sum = (temp1.val + temp2.val) + carry;
+            carry = sum / 10;
+            ListNode newNode = new ListNode(sum % 10);
+            temp.next = newNode;
+            temp = temp.next;
+            temp1 = temp1.next;
+            temp2 = temp2.next;
         }
-        first = reverse(first);
-        second = reverse(second);
-        Node head = new Node((first.data + second.data) % 10);
-        int carry = (first.data + second.data) / 10;
-
-        Node t = head;
+        while (temp1 != null) {
+            int sum = temp1.val + carry;
+            carry = sum / 10;
+            ListNode newNode = new ListNode(sum % 10);
+            temp.next = newNode;
+            temp = temp.next;
+            temp1 = temp1.next;
+        }
+        while (temp2 != null) {
+            int sum = temp2.val + carry;
+            carry = sum / 10;
+            ListNode newNode = new ListNode(sum % 10);
+            temp.next = newNode;
+            temp = temp.next;
+            temp2 = temp2.next;
+        }
         if (carry > 0) {
-
-            try {
-
-                first.next.data = first.next.data + carry;
-
-            } catch (NullPointerException e) {
-                Node g = new Node(carry);
-                t.next = g;
-                return reverse(head);
-
-            }
+            ListNode newNode = new ListNode(carry);
+            temp.next = newNode;
         }
-        first = first.next;
-        second = second.next;
-        while (first != null) {
-            int start = 0;
-            if (second != null) {
-                start = second.data;
+        return reverse(dummyNode.next);
 
-            }
-            int k = (first.data + start) % 10;
-            carry = (first.data + start) / 10;
+    }
 
-            Node temp = new Node(k);
-            t.next = temp;
-            t = t.next;
-            if (carry > 0) {
-
-                try {
-
-                    first.next.data = first.next.data + carry;
-                } catch (NullPointerException e) {
-                    Node g = new Node(carry);
-                    t.next = g;
-                    break;
-
-                }
-            }
-            first = first.next;
-            if (second != null) {
-                second = second.next;
-            }
+    public ListNode reverse(ListNode head) {
+        ListNode prev = null, curr = head, next = null;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
-        head = reverse(head);
+        return prev;
 
-        return head;
     }
 }
