@@ -98,3 +98,65 @@ class Solution20 {
 
     }
 }
+
+// ==========================================================================
+//
+// Solution without reversing the linked list(by using recursion)
+//
+// ===========================================================================
+class Solution23 {
+    public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        int size1 = getSize(l1);
+        int size2 = getSize(l2);
+        if (size1 != size2) {
+            if (size1 > size2) {
+                for (int i = 0; i < size1 - size2; i++) {
+                    ListNode newNode = new ListNode(0);
+                    newNode.next = l2;
+                    l2 = newNode;
+
+                }
+            } else {
+                for (int i = 0; i < size2 - size1; i++) {
+                    ListNode newNode = new ListNode(0);
+                    newNode.next = l1;
+                    l1 = newNode;
+                }
+            }
+        }
+        ListNode ans = getSum(l1, l2);
+        int carry = ans.val / 10;
+        ans.val = ans.val % 10;
+        if (carry > 0) {
+            ListNode newNode = new ListNode(carry);
+            newNode.next = ans;
+            ans = newNode;
+        }
+        return ans;
+
+    }
+
+    public ListNode getSum(ListNode l1, ListNode l2) {
+        if (l1.next == null && l2.next == null) {
+            ListNode ans = new ListNode(l1.val + l2.val);
+            return ans;
+        }
+        ListNode data = getSum(l1.next, l2.next);
+        int carry = data.val / 10;
+        data.val = data.val % 10;
+        ListNode ans = new ListNode(l1.val + l2.val + carry);
+        ans.next = data;
+        return ans;
+
+    }
+
+    public int getSize(ListNode head) {
+        int size = 0;
+        ListNode temp = head;
+        while (temp != null) {
+            temp = temp.next;
+            size++;
+        }
+        return size;
+    }
+}
