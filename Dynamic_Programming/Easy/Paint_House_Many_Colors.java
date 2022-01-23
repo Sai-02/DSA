@@ -49,26 +49,36 @@ public class Paint_House_Many_Colors {
                 a[i][j] = scan.nextInt();
             }
         }
+        int least = Integer.MAX_VALUE, sleast = Integer.MAX_VALUE;
         int dp[][] = new int[n][k];
         for (int j = 0; j < k; j++) {
             dp[0][j] = a[0][j];
+            if (least >= a[0][j]) {
+                sleast = least;
+                least = a[0][j];
+            } else if (sleast >= a[0][j])
+                sleast = a[0][j];
         }
         for (int i = 1; i < n; i++) {
+            int nleast = Integer.MAX_VALUE, nsleast = Integer.MAX_VALUE;
             for (int j = 0; j < k; j++) {
                 int min = Integer.MAX_VALUE;
-                for (int index = 0; index < k; index++) {
-                    if (j != index) {
-                        min = Math.min(min, dp[i - 1][index]);
-                    }
-                }
+                if (least != dp[i - 1][j])
+                    min = least;
+                else
+                    min = sleast;
                 dp[i][j] = min + a[i][j];
+                if (nleast >= dp[i][j]) {
+                    nsleast = nleast;
+                    nleast = dp[i][j];
+                } else if (nsleast >= dp[i][j])
+                    nsleast = dp[i][j];
             }
+            sleast = nsleast;
+            least = nleast;
         }
-        int min = Integer.MAX_VALUE;
-        for (int j = 0; j < k; j++) {
-            min = Math.min(min, dp[n - 1][j]);
-        }
-        System.out.println(min);
+
+        System.out.println(least);
         scan.close();
 
     }
