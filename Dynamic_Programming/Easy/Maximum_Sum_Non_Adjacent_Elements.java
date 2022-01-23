@@ -48,12 +48,13 @@ public class Maximum_Sum_Non_Adjacent_Elements {
         for (int i = 0; i < n; i++) {
             a[i] = scan.nextInt();
         }
-        int dp[] = new int[n + 1];
-        dp[1] = a[0];
-        for (int i = 2; i <= n; i++) {
-            dp[i] = Math.max(dp[i - 1], a[i - 1] + dp[i - 2]);
+        int inc = a[0], exc = 0;
+        for (int i = 1; i < n; i++) {
+            int newInclude = exc + a[i];
+            exc = Math.max(inc, exc);
+            inc = newInclude;
         }
-        System.out.println(dp[n]);
+        System.out.println(Math.max(inc, exc));
         scan.close();
     }
 }
