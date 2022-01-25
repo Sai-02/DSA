@@ -29,6 +29,7 @@
  * optimize?
  */
 
+import java.util.*;
 
 class TreeNode {
     int val;
@@ -73,5 +74,31 @@ class Solution {
     }
 }
 
+// ===================================================
+//
+// Iterative Solution
+//
+// ===================================================
 
+class Solution1 {
+    public int kthSmallest(TreeNode root, int k) {
+        Stack<TreeNode> st = new Stack<>();
+        pushLeft(st, root);
+        int count = 0;
+        while (!st.empty()) {
+            count++;
+            TreeNode node = st.pop();
+            if (count == k)
+                return node.val;
+            pushLeft(st, node.right);
+        }
+        return -1;
+    }
 
+    public void pushLeft(Stack<TreeNode> st, TreeNode root) {
+        while (root != null) {
+            st.push(root);
+            root = root.left;
+        }
+    }
+}
