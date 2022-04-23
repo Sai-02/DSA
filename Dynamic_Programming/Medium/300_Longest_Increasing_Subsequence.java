@@ -1,3 +1,4 @@
+
 /**
  * Given an integer array nums, return the length of the longest strictly
  * increasing subsequence.
@@ -33,7 +34,7 @@
  * Follow up: Can you come up with an algorithm that runs in O(n log(n)) time
  * complexity?
  */
-
+import java.util.*;
 // =================================================================
 //
 // DP solution TC- O(n2) SC-O(n)
@@ -58,3 +59,35 @@ class Solution {
     }
 }
 
+// ==================================================================
+//
+// Solution using Binary Search TC-O(nlogn)
+//
+// ==================================================================
+
+class Solution2 {
+    public int lengthOfLIS(int[] nums) {
+        ArrayList<Integer> a = new ArrayList<>();
+        a.add(nums[0]);
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] > a.get(a.size() - 1))
+                a.add(nums[i]);
+            else {
+                int l = 0, r = a.size() - 1;
+                while (l < r) {
+                    int mid = (l + r) / 2;
+                    if (a.get(mid) == nums[i]) {
+                        l = mid;
+                        break;
+                    } else if (a.get(mid) > nums[i]) {
+                        r = mid;
+                    } else {
+                        l = mid + 1;
+                    }
+                }
+                a.set(l, nums[i]);
+            }
+        }
+        return a.size();
+    }
+}
