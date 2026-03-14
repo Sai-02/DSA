@@ -141,11 +141,12 @@ The repository is organized topic-wise to make learning systematic and easy to n
 
 # Repository Structure
 
+```
 DSA
 │
 ├── Arrays
 ├── Backtracking
-├── Binary Search Tree
+├── Binary_Search_Tree
 ├── Bits
 ├── Dynamic_Programming
 ├── Graph
@@ -157,14 +158,15 @@ DSA
 ├── Queue
 ├── Recursion
 ├── Searching
-├── Segment-Tree
-├── Sliding Window
+├── Segment_Tree
+├── Sliding_Window
 ├── Sorting
 ├── Stack
 ├── String
 ├── Tree
 ├── Trie
 └── DSU
+```
 
 
 
